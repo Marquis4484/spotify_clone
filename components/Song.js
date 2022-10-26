@@ -1,4 +1,5 @@
 import React from 'react'
+import {millisToMinutesAndSeconds} from "../lib/time";
 
 function Song() {
   return (
@@ -6,4 +7,4 @@ function Song() {
   )
 }
 
-export default Song
+export default Songs
