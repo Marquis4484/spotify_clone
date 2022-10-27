@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Sidebar from '../components/Sidebar.js'
 import Center from '../components/Center.js'
+import Player from '../components/Player.js'
 import Head from 'next/head'
 
 
@@ -18,7 +19,7 @@ const Home: NextPage = () => {
       <Center/>
     </main>
 
-      <div>{/*Player*/}</div>
+      <div className="sticky-bottom-0"><Player/></div>
     </div>
 
   )
