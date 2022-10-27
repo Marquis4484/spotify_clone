@@ -1,4 +1,5 @@
 import React from 'react'
+import {millisToMinutesAndSeconds} from "../lib/time";
 
 function Song({order,track}) {
     const spotifyApi = useSpotify();
@@ -21,4 +22,4 @@ function Song({order,track}) {
   )
 }
 
-export default Song
+export default Songs
