@@ -3,7 +3,6 @@ import Sidebar from '../components/Sidebar.js'
 import Center from '../components/Center.js'
 import Head from 'next/head'
 
-
 const Home: NextPage = () => {
   return (
     <div className="bg-black h-screen overflow-hidden">
@@ -26,7 +25,7 @@ const Home: NextPage = () => {
 
 export default Home
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   const session = await getSession(context);
 
   return{

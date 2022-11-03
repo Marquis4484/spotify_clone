@@ -31,7 +31,7 @@ function Center() {
         })
         .catch((err) => console.log("Something went wrong", err))
     }, [spotifyApi, playlistId]);
-}
+
 
   return (
     <div className="flex flex-grow h-screen over-y-scroll scrollbar-hide ">
@@ -61,3 +61,5 @@ function Center() {
     </div>
   )
 }
+
+export default Center

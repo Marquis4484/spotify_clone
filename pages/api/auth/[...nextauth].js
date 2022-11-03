@@ -14,8 +14,7 @@ async function refreshAccessToken(token){
         return{
             ...token,
             accessToken: refreshedToken.access_token,
-            accessTokenExpires: Date.now + refreshedToken.expires_in * 1000
-            spotify API
+            accessTokenExpires: Date.now + refreshedToken.expires_in * 1000,
             refreshToken: refreshedToken.refreshed_token ?? token.refreshToken, 
 
         };
@@ -40,6 +39,7 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  // adding additional authentication features
   secret: process.env.JWT_SECRET,
   pages: {
     signin: "/login"
