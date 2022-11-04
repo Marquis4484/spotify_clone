@@ -40,7 +40,7 @@ export const authOptions = {
     // ...add more providers here
   ],
   // adding additional authentication features
-  secret: process.env.JWT_SECRET,
+  secret: process.env.JWT_SECRET, // encrypting secret 
   pages: {
     signin: "/login"
   },

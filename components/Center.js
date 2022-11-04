@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react';
 import {CheveronDownIcon} from '@heroicons/react/24/outline';
-const {data: session} = useSession();
-import {playlistIDState, playlistState} from "../atoms/playlistAtom"
+import {useSession } from "next-auth/react";
+import {shuffle} from "lodash";
+import {playlistIdState, playlistState} from "../atoms/playlistAtom";
 import {useRecoilState, useRecoilValue} from "recoil";
+import useSpotify from "../hooks/useSpotify";
+import Songs from "./Songs";
 
 const colors = [
     "from-indigo-500",
@@ -38,7 +41,7 @@ function Center() {
       <header className='absolute top-5 right-8'>
         <div className="flex items-center text-white bg-black space-x-3 opacity-90
         hover:opacity-80 cursor-pointer rounded-full p-1 pr-2" onClick={() => signOut()}>
-            <img src={session?.images} className='rounded-full w-10 h-10' src={session?.userimage}  alt=""/>
+            <img className='rounded-full w-10 h-10' src={session?.user.image}  alt=""/>
             <h2>{session?.user.name}</h2>
            
             <CheveronDownIcon className="h-5 w-5"/>
@@ -46,7 +49,7 @@ function Center() {
       </header>
       <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white padding-8`}>
 
-      <img src={playlist?.images} className='h-44 w-44 shadow-2xl' src={playlist?.images?.[0]?.url}  alt=""/>
+      <img className='h-44 w-44 shadow-2xl' src={playlist?.images?.[0]?.url}  alt=""/>
        
         <div>
             <p>PLAYLIST</p>

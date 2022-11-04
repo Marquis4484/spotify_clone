@@ -1,24 +1,30 @@
 import {useEffect, useState} from 'react';
 import {HomeIcon, MagnifyingGlassIcon, BuildingLibraryIcon, PlusCircleIcon,HeartIcon,RssIcon} from '@heroicons/react/24/outline'
 import {signOut, useSession} from "next-auth/react";
+import useSpotify from '../hooks/useSpotify';
+import { playlistIdState } from '../atoms/playlistAtom';
+import {useRecoilState } from "recoil";
 
 
 function Sidebar() {
     
-    const spotifyAPI = useSpotify();
+    const spotifyApi = useSpotify();
     const {data: session, status } = useSession();
     const [playlists, setPlaylists] = useState([]);
-    const [playlistsID, setPlaylistsID] = useRecoilState(null);
-    (playlistIdState);
+    const [playlistId, setPlaylistsId] = useRecoilState(playlistIdState);
+
+    console.log("You picked playlist >>>", playlistId)
+    
+
         useEffect(() => {
 
-                if (spotifyAPI.getAccessToken()) {
-                spotifyAPI.getUserPlaylists().then((data) => {
+                if (spotifyApi.getAccessToken()) {
+                spotifyApi.getUserPlaylists().then((data) => {
                     setPlaylists(data.body.items);
                 });
 
                 }
-        }, [session, spotifyAPI])
+        }, [session, spotifyApi])
            
          
 
@@ -55,19 +61,15 @@ overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidd
         </button> 
         <hr className="border-t-[0.1px] border-gray-900"/>
 
-       {playlists.map((playlist) => {
-        <p key={playlists.id} className="cursor-pointer">
+       {playlists.map((playlist) => (
+        <p key={playlists.id} onClick={() => setPlaylistsId(playlist.Id)} className="cursor-pointer hover:text-white">
             {playlist.name}
         </p>
-       })
-      
+       ))}
     </div>
 </div>
 
-}
-
-        
-  )
+    );
 }
 
 export default Sidebar

@@ -16,7 +16,7 @@ function useSpotify() {
         }
     }, [session]);
     
-  return spotifyAPI;
+  return spotifyApi;
 }
 
 export default useSpotify;

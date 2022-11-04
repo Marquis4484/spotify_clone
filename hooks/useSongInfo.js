@@ -1,4 +1,4 @@
-import {useEffect} from "React";
+import {useEffect} from "react";
 import {useRecoilState} from "recoil";
 import {curretnTrackIdState} from "../atoms/songAtom";
 import useSpotify from "./useSpotify";
